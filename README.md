@@ -22,6 +22,15 @@ This project demonstrates the use of [Express.js](https://expressjs.com/) to bui
     ```
 4. Visit `http://localhost:8000` in your browser.
 
+## Routes
+
+- `/` - Home page (simple greeting)
+- `/about` - About page
+- `/contact` - Contact page
+- `/date` - Displays live-updating current time
+- `/welcome/:username` - Personalized welcome message
+- `/a` - The "a" page :D
+
 ## Requirements
 
 - Node.js (v14+)

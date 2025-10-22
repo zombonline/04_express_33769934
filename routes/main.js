@@ -5,43 +5,36 @@ const router = express.Router();
 //import the fs module to read files
 const fs = require('fs');
 
-//Handle the routes (home, about, contact, date, etc.)
+//Handle the routes (home, about, contact with simple text responses)
 router.get('/', (req, res) => { res.send('Hello World!'); });
-
 router.get('/about', (req, res) => { res.send('This is the About page.'); });
-
 router.get('/contact', (req, res) => { res.send('Contact me via email: bjone001@gold.ac.uk.'); });
 
-router.get('/date', (req, res) => {
-    const currentDate = new Date();
-    res.send(`Current date and time is: ${currentDate}`);
-});
-
+// Handle route with URL parameter 
 router.get('/welcome/:username', (req, res) => {
     console.log(req.params);
     const username = req.params.username;
     res.send(`Welcome, ${username}!`);
 });
 
-router.get('/chain', (req, res, next) => {
-    console.log('First handler');
+// Handle route with chained middleware functions
+router.get('/chain', (req, res) => {
+    console.log('First handler (doing a bit of work before passing to next)');
     next();
 }, (req, res) => {
-    console.log('Second handler');
+    console.log('Second handler (work done, sending response)');
     res.send('Response from the second handler');
 });
 
-router.get('/a', (req, res) => {
-    fs.readFile('./routes/a.html', 'utf-8', (err, data) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send('Error reading file');
-        } else {
-            res.send(data);
-        }
-    });
+// Serve the date.html file for the /date route
+router.get('/date', (req, res) => {
+    res.sendFile('public/date.html', { root: '.' });
 });
 
+// Serve the a.html file for the /a route
+router.get('/a', (req, res) => {
+    res.sendFile('public/a.html', { root: '.' });
+});
 
 // Export the router object so index.js can access it
 module.exports = router;
