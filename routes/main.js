@@ -31,8 +31,8 @@ router.get('/date', (req, res) => {
     res.sendFile('public/date.html', { root: '.' });
 });
 
-// Serve the a.html file for the /a route
-router.get('/a', (req, res) => {
+// Serve the a.html file for the /file route
+router.get('/file', (req, res) => {
     res.sendFile('public/a.html', { root: '.' });
 });
 
