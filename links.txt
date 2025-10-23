@@ -1,1 +1,1 @@
-home=https://www.doc.gold.ac.uk/ssh/224/
+home=https://www.doc.gold.ac.uk/usr/224/
