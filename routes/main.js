@@ -18,7 +18,7 @@ router.get('/welcome/:username', (req, res) => {
 });
 
 // Handle route with chained middleware functions
-router.get('/chain', (req, res) => {
+router.get('/chain', (req, res, next) => {
     console.log('First handler (doing a bit of work before passing to next)');
     next();
 }, (req, res) => {
